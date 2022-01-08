@@ -50,3 +50,27 @@ class UserViewSet(viewsets.ModelViewSet):
     # filter_backends = (filters.SearchFilter)
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+
+
+'''
+    custom api view to post user, generate token, confim token and login users
+'''
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(
+            data=request.data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data["user"]
+        token, created = Token.objects.get_or_create(user=user)
+        return Response(
+            {
+                "token": token.key,
+                "user_id": user.pk,
+                "role": user.role,
+                "email": user.email,
+                "username": user.username,
+            }
+        )
