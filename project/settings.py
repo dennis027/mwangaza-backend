@@ -78,8 +78,9 @@ INSTALLED_APPS = [
      'app',
       'rest_framework',
     'knox',
+      'corsheaders',
     
-      
+         
 ]
 
 MIDDLEWARE = [
@@ -91,6 +92,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+       'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -181,3 +184,9 @@ REST_FRAMEWORK = {
 }
 
 
+CORS_ORIGIN_ALLOW_ALL = True   
+
+CORS_ORIGIN_WHITELIST = [
+'http://localhost:4200',
+'http://127.0.0.1:3000'
+]
