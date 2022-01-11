@@ -1,11 +1,13 @@
 
+from re import search
+from django.db.models import query
 from django.shortcuts import render
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
 from .serializers import *
 from django.contrib.auth import login
-
+from .models import *
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
@@ -74,3 +76,14 @@ class CustomAuthToken(ObtainAuthToken):
                 "username": user.username,
             }
         )
+
+
+'''
+user view for serilizers
+'''   
+
+class ContactViewSet(viewsets.ModelViewSet):
+    search_fields=['name']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer      

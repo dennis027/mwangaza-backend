@@ -12,6 +12,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 router = DefaultRouter()
 
 router.register('user',UserViewSet,basename='user'),
+router.register('contact',ContactViewSet,basename='contact')
 
 
 urlpatterns=[
