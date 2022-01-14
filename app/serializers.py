@@ -1,4 +1,5 @@
 
+from dataclasses import field
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -45,3 +46,8 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ('name','email','subject','message')
+
+class PartnerInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PartnerInfo
+        fields = ('user')         
