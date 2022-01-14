@@ -87,3 +87,22 @@ class ContactViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer      
+
+class PartnerViewSet(viewsets.ModelViewSet):
+    search_fields = ['user']
+    filter_backends = (filters.SearchFilter,)
+    queryset = PartnerInfo.objects.all()
+    serializer_class = PartnerInfoSerializer
+
+class VolunteerViewSet(viewsets.ModelViewSet):
+    search_fields = ['user']
+    filter_backends = (filters.SearchFilter,)
+    queryset = VolunteerInfo.objects.all()
+    serializer_class = VolunteerInfoSerializer
+
+
+class AnnouncementViewSet(viewsets.ModelViewSet):
+    search_fields = ['user']
+    filter_backends = (filters.SearchFilter,)
+    queryset = Announcement.objects.all()
+    serializer_class = AnnouncementSerializer    

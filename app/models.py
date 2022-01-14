@@ -53,7 +53,7 @@ class Contact(models.Model):
 
 class PartnerInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=60, blank=True)
+    # name = models.CharField(max_length=60, blank=True)
     subject = models.CharField(max_length=60, blank=True)
     message = models.CharField(max_length=300, blank=True)
     date = models.DateField(null=True)
@@ -62,16 +62,17 @@ class PartnerInfo(models.Model):
  
 class VolunteerInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=60, blank=True)
+    # name = models.CharField(max_length=60, blank=True)
     subject = models.CharField(max_length=60, blank=True)
     message = models.CharField(max_length=300, blank=True)
-    date = models.DateField(null=True)
+    date = models.DateField(null=True) 
 
 class Announcement(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     subject = models.TextField(max_length=255, default="Add Subject", blank=True)
-    information = models.CharField(max_length=60,blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    message = models.CharField(max_length=600,blank=True)
     location = models.CharField(max_length=60,blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    
    
 

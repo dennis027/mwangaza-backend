@@ -50,4 +50,15 @@ class ContactSerializer(serializers.ModelSerializer):
 class PartnerInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PartnerInfo
-        fields = ('user')         
+        fields = ('user','subject','message','date')         
+
+class VolunteerInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = VolunteerInfo
+        fields = ('user','subject','message','date')                 
+
+
+class AnnouncementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Announcement
+        fields = ('user','subject','message','location','date')        

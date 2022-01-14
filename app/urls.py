@@ -13,11 +13,13 @@ router = DefaultRouter()
 
 router.register('user',UserViewSet,basename='user'),
 router.register('contact',ContactViewSet,basename='contact')
-
+router.register('partnerInfo',PartnerViewSet,basename='partnerInfo')
+router.register('volunteerInfo',VolunteerViewSet,basename='volunteerInfo')
+router.register('announcement',AnnouncementViewSet,basename='announcement')
 
 urlpatterns=[
      path('',include(router.urls)),
-    path('register/', RegisterAPI.as_view(), name='register'),
+    path('register/', RegisterAPI.as_view(), name='register'),               
     path('login/', LoginAPI.as_view(), name='login'),
     path('logout/', knox_views.LogoutView.as_view(), name='logout'),
     path('logoutall/', knox_views.LogoutAllView.as_view(), name='logoutall'),
