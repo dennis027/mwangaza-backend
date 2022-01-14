@@ -66,13 +66,13 @@ class VolunteerInfo(models.Model):
     subject = models.CharField(max_length=60, blank=True)
     message = models.CharField(max_length=300, blank=True)
     date = models.DateField(null=True) 
-
+  
 class Announcement(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    subject = models.TextField(max_length=255, default="Add Subject", blank=True)
-    message = models.CharField(max_length=600,blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=60, default="Add Subject", blank=True)
+    message = models.TextField(max_length=255,blank=True)
     location = models.CharField(max_length=60,blank=True)
-    date = models.DateTimeField(auto_now_add=True)
-    
-   
+    # date = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(null=True) 
+         
 
