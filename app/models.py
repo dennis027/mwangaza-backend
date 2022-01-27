@@ -87,11 +87,26 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
     send_mail(
         # title:
-        "Password Reset for {title}".format(title="Some website title"),
+        "Password Reset for {title}".format(title="Mwangaza"),
         # message:
         email_plaintext_message,
         # from:
         "machariad196@gmail.com",
         # to:
-        ['dennis.kimani@student.moringaschool.com']
+        [reset_password_token.user.email]
+    )        
+
+def send_email(sender, instance, reset_password_token, *args, **kwargs):
+
+    email_plaintext_message = "{}?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
+
+    send_mail(
+        # title:
+        "Password Reset for {title}".format(title="Mwangaza"),
+        # message:
+        email_plaintext_message,
+        # from:
+        "machariad196@gmail.com",
+        # to:
+        [reset_password_token.user.email]
     )        
