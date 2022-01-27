@@ -74,5 +74,3 @@ class Announcement(models.Model):
     location = models.CharField(max_length=60,blank=True)
     # date = models.DateTimeField(auto_now_add=True)
     date = models.DateField(null=True) 
-         
-

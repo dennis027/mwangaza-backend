@@ -1,5 +1,4 @@
 
-
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -61,4 +60,4 @@ class VolunteerInfoSerializer(serializers.ModelSerializer):
 class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
-        fields = ('user','subject','message','location','date')        
+        fields = ('user','subject','message','location','date')     
