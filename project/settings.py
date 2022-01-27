@@ -33,7 +33,7 @@ STATICFILES_DIRS = (
 
 # SECURITY WARNING: keep the secret key used in production secret!
 MODE=config("MODE", default="dev")
-SECRET_KEY ='django-insecure-n&_=4$jpyb-$^3^e4^dp#x6o9&*@xbivye+su_b%#s3k18c^b6'
+SECRET_KEY =config('SECRET_KEY')
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 # development
@@ -44,7 +44,7 @@ if config('MODE')=="dev":
            'NAME': config('DB_NAME'),
        'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-           'HOST': config('DB_HOST'),      
+           'HOST': config('DB_HOST'),          
            'PORT': '',
        }
        
