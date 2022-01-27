@@ -12,6 +12,9 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework import filters
 
+from rest_framework import serializers
+from django.contrib.auth.models import User
+
 
 # User Serializer
 User = get_user_model()
@@ -61,3 +64,13 @@ class AnnouncementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Announcement
         fields = ('user','subject','message','location','date')     
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

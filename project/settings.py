@@ -34,7 +34,7 @@ STATICFILES_DIRS = (
 # SECURITY WARNING: keep the secret key used in production secret!
 MODE=config("MODE", default="dev")
 SECRET_KEY =config('SECRET_KEY')
-DEBUG = config('DEBUG', default=True, cast=bool)
+DEBUG = config('DEBUG', default=True, cast=bool)   
 
 # development
 if config('MODE')=="dev":
@@ -42,7 +42,7 @@ if config('MODE')=="dev":
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
            'NAME': config('DB_NAME'),
-       'USER': config('DB_USER'),
+       'USER': config('DB_USER'),     
         'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),          
            'PORT': '',
@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'knox',
       'corsheaders',
       'rest_framework.authtoken',
+          'django_rest_passwordreset',
       
     
          
