@@ -76,7 +76,7 @@ INSTALLED_APPS = [
      'app',
       'rest_framework',
     'knox',
-      'corsheaders',
+    #   'corsheaders',
       'rest_framework.authtoken',
           'django_rest_passwordreset',
       
