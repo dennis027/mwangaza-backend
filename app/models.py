@@ -43,7 +43,7 @@ class Volunteer(models.Model):
 
 
 class Contact(models.Model):
-   
+    id= models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=60, blank=True)
     email = models.CharField(max_length=60, blank=True)
     subject = models.CharField(max_length=60, blank=True)

@@ -48,7 +48,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ('name','email','subject','message')
+        fields = ('id','name','email','subject','message')
 
 class PartnerInfoSerializer(serializers.ModelSerializer):
     class Meta:
