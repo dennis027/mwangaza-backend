@@ -43,7 +43,7 @@ class Volunteer(models.Model):
 
 
 class Contact(models.Model):
-   
+    id= models.PositiveIntegerField(primary_key=True)
     name = models.CharField(max_length=60, blank=True)
     email = models.CharField(max_length=60, blank=True)
     subject = models.CharField(max_length=60, blank=True)
@@ -98,7 +98,7 @@ def password_reset_token_created(sender, instance, reset_password_token, *args, 
 
 def send_email(sender, instance, reset_password_token, *args, **kwargs):
 
-    email_plaintext_message = "{}?token={}".format(reverse('password_reset:reset-password-request'), reset_password_token.key)
+    email_plaintext_message = 'thsiodejndjkewbdc'
 
     send_mail(
         # title:
@@ -110,3 +110,5 @@ def send_email(sender, instance, reset_password_token, *args, **kwargs):
         # to:
         [reset_password_token.user.email]
     )        
+
+

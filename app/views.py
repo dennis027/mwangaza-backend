@@ -18,7 +18,7 @@ from rest_framework import filters
 from rest_framework import status
 from rest_framework import generics
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
 # from django.contrib.auth.models import User
 from .serializers import ChangePasswordSerializer
 from rest_framework.permissions import IsAuthenticated  
@@ -127,7 +127,7 @@ def email(request):
         if form.is_valid():
             # form.save()
             # send_mail(subject, message[fname, lname, email, phonenumber, subject, message], sedner, recipient)
-            subject = "Contact form inquiry"
+            subject = "Email Test"
             body = {
                 # 'first_name': form.cleaned_data['first_name'],
                 # 'last_name':form.cleaned_data['last_name'],
@@ -184,3 +184,29 @@ class ChangePasswordView(generics.UpdateAPIView):
             return Response(response)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class SendMailView(APIView):
+    """
+    an endpoint for sending emails
+    """    
+    serializer_class=SendEmails
+    model = User
+    permission_classes = (IsAuthenticated,)
+    def get_object(self, queryset=None):
+        obj = self.request.user
+        return obj
+
+    def send (self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = self.get_serializers(data=request.data)    
+
+        if serializer.is_valid():
+            self.object.send_email(serializer.data.get("emailid","subject","message"))
+            self.object.save()
+            response = {
+                'status': 'success',
+                'code': status.HTTP_200_OK,
+                'message': 'Password updated successfully',
+                'data': []
+            }
+           

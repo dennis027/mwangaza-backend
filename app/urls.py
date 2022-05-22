@@ -28,6 +28,7 @@ urlpatterns=[
        path('email',views.email,name='email'),     
           path('api/change-password/', ChangePasswordView.as_view(), name='change-password'), 
             path('api/password_reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
-
+    path('sendmail/',SendMailView.as_view(),name='sendmail'),
+    
 
 ] 

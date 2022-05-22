@@ -1,4 +1,5 @@
 
+from email import message
 from pyexpat import model
 from rest_framework import serializers
 from django.contrib.auth.models import User
@@ -48,7 +49,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
-        fields = ('name','email','subject','message')
+        fields = ('id','name','email','subject','message')
 
 class PartnerInfoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -78,5 +79,9 @@ class ChangePasswordSerializer(serializers.Serializer):
 
 class SendEmails(serializers.Serializer):
     model = User
-
-    
+    """
+    Serializer for password change endpoint.
+    """
+    emailid = serializers.CharField(required=True)
+    subject = serializers.CharField(required=True)
+    message = serializers.CharField(required=True)
